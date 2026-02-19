@@ -4,17 +4,6 @@ Aplicación web desarrollada con Angular 17+ para la gestión de animales de un 
 
 ---
 
-## 📋 Tabla de Contenidos
-
-- [Descripción](#descripción)
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Funcionalidades](#funcionalidades)
-- [API Utilizada](#api-utilizada)
-- [Instalación y Ejecución](#instalación-y-ejecución)
-
----
-
 ## 📖 Descripción
 
 Zoo App es una aplicación de gestión de animales que permite a los usuarios visualizar, crear, editar y eliminar información sobre los animales de un zoológico. Cada animal tiene los siguientes datos:
