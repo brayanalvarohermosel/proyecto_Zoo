@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="detalle-container">
+
+    @if (mensajeError) {
+      <div class="mensaje mensaje-error">
+        ❌ {{ mensajeError }}
+        <br><br>
+        <button class="btn btn-primary" (click)="volverAlListado()">
+          🏠 Volver al listado
+        </button>
+      </div>
+    }
+
+    @if (cargando) {
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Cargando detalles del animal...</p>
+      </div>
+    }
+
+    @if (!cargando && animal && !mensajeError) {
+      <div>
+        <div class="detalle-header">
+          <h1>{{ animal.nombre }}</h1>
+          <button class="btn btn-secondary" (click)="volverAlListado()">
+            ← Volver
+          </button>
+        </div>
+
+        <div class="detalle-info-simple">
+          
+          <div class="info-item">
+            <label>🦁 Nombre</label>
+            <p>{{ animal.nombre }}</p>
+          </div>
+
+          <div class="info-item">
+            <label>🔬 Especie</label>
+            <p>{{ animal.especie }}</p>
+          </div>
+
+          <div class="info-item">
+            <label>🌍 Hábitat</label>
+            <p>{{ animal.habitat }}</p>
+          </div>
+
+          <div class="info-item">
+            <label>🍖 Dieta</label>
+            <p>{{ animal.dieta }}</p>
+          </div>
+
+          <div class="info-item">
+            <label>🆔 ID</label>
+            <p>{{ animal.id }}</p>
+          </div>
+
+        </div>
+
+        <div class="detalle-actions">
+          <button class="btn btn-secondary" (click)="editarAnimal()">
+            ✏️ Editar Animal
+          </button>
+          
+          <button class="btn btn-danger" (click)="eliminarAnimal()">
+            🗑️ Eliminar Animal
+          </button>
+        </div>
+      </div>
+    }
+
+  </div>
+</div>

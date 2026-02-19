@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="listado-container">
+
+    <div class="header">
+      <h1>🦁 Animales del Zoo</h1>
+      <button class="btn btn-success" (click)="irACrear()">
+        ➕ Añadir Animal
+      </button>
+    </div>
+
+    @if (mensajeExito) {
+      <div class="mensaje mensaje-exito">
+        ✅ {{ mensajeExito }}
+      </div>
+    }
+
+    @if (mensajeError) {
+      <div class="mensaje mensaje-error">
+        ❌ {{ mensajeError }}
+      </div>
+    }
+
+    @if (cargando) {
+      <div class="loading">
+        <div class="spinner"></div>
+      </div>
+    }
+
+    @if (!cargando && animales.length > 0) {
+      <div class="animales-grid">
+        @for (animal of animales; track animal.id) {
+          <app-animal-card
+            [animal]="animal"
+            (verClick)="verDetalle($event)"
+            (editarClick)="editarAnimal($event)"
+            (borrarClick)="eliminarAnimal($event.id, $event.nombre)"
+          ></app-animal-card>
+        }
+      </div>
+    }
+
+    @if (!cargando && animales.length === 0) {
+      <div class="lista-vacia">
+        <div class="lista-vacia-icon">🦁</div>
+        <h2>No hay animales en el zoo</h2>
+        <p>Comienza añadiendo tu primer animal</p>
+        <button class="btn btn-success" (click)="irACrear()">
+          ➕ Añadir primer animal
+        </button>
+      </div>
+    }
+
+  </div>
+</div>

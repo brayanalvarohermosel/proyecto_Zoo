@@ -1,0 +1,134 @@
+<div class="container">
+  <div class="form-container">
+
+    <div class="form-header">
+      <h2>✏️ Editar Animal</h2>
+    </div>
+
+    @if (mensajeError) {
+      <div class="mensaje mensaje-error">
+        ❌ {{ mensajeError }}
+      </div>
+    }
+
+    @if (cargando) {
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Cargando datos del animal...</p>
+      </div>
+    }
+
+    @if (!cargando) {
+      <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <label for="nombre">Nombre del Animal</label>
+          <input
+            type="text"
+            id="nombre"
+            formControlName="nombre"
+            placeholder="Ej: Simba"
+            [class.ng-invalid]="campoNoValido('nombre')"
+          >
+          @if (campoNoValido('nombre')) {
+            <span class="error-message">
+              {{ obtenerMensajeError('nombre') }}
+            </span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="especie">Especie</label>
+          <input
+            type="text"
+            id="especie"
+            formControlName="especie"
+            placeholder="Ej: León africano"
+            [class.ng-invalid]="campoNoValido('especie')"
+          >
+          @if (campoNoValido('especie')) {
+            <span class="error-message">
+              {{ obtenerMensajeError('especie') }}
+            </span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="habitat">Hábitat</label>
+          <select
+            id="habitat"
+            formControlName="habitat"
+            [class.ng-invalid]="campoNoValido('habitat')"
+          >
+            <option value="">Selecciona un hábitat</option>
+            <option value="Sabana">Sabana</option>
+            <option value="Selva">Selva</option>
+            <option value="Bosque">Bosque</option>
+            <option value="Desierto">Desierto</option>
+            <option value="Tundra">Tundra</option>
+            <option value="Océano">Océano</option>
+            <option value="Montaña">Montaña</option>
+            <option value="Pantano">Pantano</option>
+          </select>
+          @if (campoNoValido('habitat')) {
+            <span class="error-message">
+              {{ obtenerMensajeError('habitat') }}
+            </span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="dieta">Dieta</label>
+          <select
+            id="dieta"
+            formControlName="dieta"
+            [class.ng-invalid]="campoNoValido('dieta')"
+          >
+            <option value="">Selecciona una dieta</option>
+            <option value="Carnívoro">Carnívoro</option>
+            <option value="Herbívoro">Herbívoro</option>
+            <option value="Omnívoro">Omnívoro</option>
+            <option value="Insectívoro">Insectívoro</option>
+            <option value="Piscívoro">Piscívoro</option>
+          </select>
+          @if (campoNoValido('dieta')) {
+            <span class="error-message">
+              {{ obtenerMensajeError('dieta') }}
+            </span>
+          }
+        </div>
+
+        <div class="form-actions">
+          <button 
+            type="button" 
+            class="btn btn-secondary" 
+            (click)="cancelar()"
+            [disabled]="enviando"
+          >
+            ❌ Cancelar
+          </button>
+
+          <button 
+            type="submit" 
+            class="btn btn-success"
+            [disabled]="formulario.invalid || enviando"
+          >
+            @if (enviando) {
+              ⏳ Guardando...
+            } @else {
+              ✅ Guardar Cambios
+            }
+          </button>
+        </div>
+
+        @if (formulario.invalid && formulario.touched) {
+          <div class="mensaje mensaje-info">
+            ⚠️ Por favor, completa todos los campos obligatorios correctamente
+          </div>
+        }
+
+      </form>
+    }
+
+  </div>
+</div>

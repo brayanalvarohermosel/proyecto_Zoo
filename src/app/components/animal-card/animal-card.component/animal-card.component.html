@@ -1,0 +1,42 @@
+<div class="animal-card">
+  
+  <div class="card-content">
+    <h3 class="card-title">{{ animal.nombre }}</h3>
+    
+    <p class="card-info">
+      <strong>Especie:</strong> {{ animal.especie }}
+    </p>
+    
+    <p class="card-info">
+      <strong>Hábitat:</strong> {{ animal.habitat }}
+    </p>
+    
+    <p class="card-info">
+      <strong>Dieta:</strong> {{ animal.dieta }}
+    </p>
+
+    <div class="card-actions">
+      <button 
+        class="btn btn-primary" 
+        (click)="onVerClick()"
+        title="Ver detalles">
+        👁️ Ver
+      </button>
+      
+      <button 
+        class="btn btn-secondary" 
+        (click)="onEditarClick()"
+        title="Editar animal">
+        ✏️ Editar
+      </button>
+      
+      <button 
+        class="btn btn-danger" 
+        (click)="onBorrarClick()"
+        title="Eliminar animal">
+        🗑️ Borrar
+      </button>
+    </div>
+  </div>
+
+</div>
